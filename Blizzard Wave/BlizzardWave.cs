@@ -71,7 +71,12 @@ namespace Blizzard_Wave
         {
             try
             {
-                if (!mp.IsPlay)
+                if (mp.Handle == 0 && !mp.IsPlay)
+                {
+                    mp.Load(Song.GetSongById(TempIndex));
+                    mp.Play();
+                }//end if
+else                 if (!mp.IsPlay && mp.Handle !=0)
                 {
                     mp.Play();
                 }//end if
@@ -155,7 +160,6 @@ foreach(var l in Song.MusicData)
                 foreach (var h in SongHash)
                 {
                     var list = new ListViewItem();
-                    list = null;
                     list.Text = Path.GetFileName(h);
                     list.SubItems.Add(h);
                     playControl1.PlayListView.Items.Add(list);

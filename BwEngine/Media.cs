@@ -22,9 +22,18 @@ namespace BwEngine
         private string filename;
         private bool isPlay;
         private float volume;
-        private float Balance;
+        private float pan;
+
         #endregion
         #region Fields
+        public float Pan{
+            get { return pan; }
+            set
+            {
+                Bass.ChannelSlideAttribute(handle, ChannelAttribute.Pan, value, 100);
+                pan = value;
+            }
+            }//endPan
         public float Volume
         {
             get { return volume; }
@@ -47,7 +56,7 @@ namespace BwEngine
             }
         }//end string filename
 
-int Handle
+public int Handle
         {
             get
             {
@@ -77,6 +86,7 @@ int Handle
                 Bass.StreamFree(Handle);
             }//end if
                 Handle = Bass.CreateStream(filename);
+            Bass.ChannelSetAttribute(Handle, ChannelAttribute.Pan, Pan);
             if (IsPlay) IsPlay = false;
             SongLoadSuccess.Invoke(this,EventArgs.Empty);
         }//end method.load
