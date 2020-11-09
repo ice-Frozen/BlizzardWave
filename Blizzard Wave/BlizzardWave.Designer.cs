@@ -41,6 +41,8 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PlayListMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddFileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddFolderMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +53,6 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.AddFileMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddFolderMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.PlayListTab.SuspendLayout();
             this.MixerTab.SuspendLayout();
@@ -114,6 +114,8 @@
             this.Mixer.Size = new System.Drawing.Size(150, 150);
             this.Mixer.TabIndex = 0;
             this.Mixer.volumeBar_Scroll += new System.EventHandler(this.mixer1_volumeBar_Scroll);
+            this.Mixer.panBar_Scroll += new System.EventHandler(this.Mixer_panBar_Scroll);
+            this.Mixer.Load += new System.EventHandler(this.Mixer_Load);
             // 
             // menuStrip1
             // 
@@ -145,7 +147,7 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -155,19 +157,19 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // PlayListMenu
@@ -179,6 +181,20 @@
             this.PlayListMenu.Name = "PlayListMenu";
             this.PlayListMenu.Size = new System.Drawing.Size(56, 20);
             this.PlayListMenu.Text = "&Playlist";
+            // 
+            // AddFileMenu
+            // 
+            this.AddFileMenu.AccessibleName = "Add File";
+            this.AddFileMenu.Name = "AddFileMenu";
+            this.AddFileMenu.Size = new System.Drawing.Size(132, 22);
+            this.AddFileMenu.Text = "&Add File";
+            // 
+            // AddFolderMenu
+            // 
+            this.AddFolderMenu.AccessibleName = "Add Folder";
+            this.AddFolderMenu.Name = "AddFolderMenu";
+            this.AddFolderMenu.Size = new System.Drawing.Size(132, 22);
+            this.AddFolderMenu.Text = "&Add Folder";
             // 
             // toolsToolStripMenuItem
             // 
@@ -192,13 +208,13 @@
             // customizeToolStripMenuItem
             // 
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.customizeToolStripMenuItem.Text = "&Customize";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // helpToolStripMenuItem
@@ -250,20 +266,6 @@
             this.openFileDialog.RestoreDirectory = true;
             this.openFileDialog.Title = "Select Media File";
             this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
-            // 
-            // AddFileMenu
-            // 
-            this.AddFileMenu.AccessibleName = "Add File";
-            this.AddFileMenu.Name = "AddFileMenu";
-            this.AddFileMenu.Size = new System.Drawing.Size(180, 22);
-            this.AddFileMenu.Text = "&Add File";
-            // 
-            // AddFolderMenu
-            // 
-            this.AddFolderMenu.AccessibleName = "Add Folder";
-            this.AddFolderMenu.Name = "AddFolderMenu";
-            this.AddFolderMenu.Size = new System.Drawing.Size(180, 22);
-            this.AddFolderMenu.Text = "&Add Folder";
             // 
             // BlizzardWave
             // 

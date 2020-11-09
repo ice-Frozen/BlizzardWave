@@ -13,6 +13,7 @@ namespace Blizzard_Wave
     public partial class Mixer : UserControl
     {
         public event EventHandler volumeBar_Scroll;
+        public event EventHandler panBar_Scroll;
         public Mixer()
         {
             InitializeComponent();
@@ -31,5 +32,13 @@ namespace Blizzard_Wave
                     }//end if
 
         }
+
+        private void PanBar_Scroll(object sender, EventArgs e)
+        {
+            if (panBar_Scroll != null)
+            {
+                panBar_Scroll(sender, e);
+            }//end if
+            }
     }
 }

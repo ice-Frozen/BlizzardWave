@@ -38,7 +38,7 @@ namespace Blizzard_Wave
             string SongName = Song.GetSongById(Index);
             if (!string.IsNullOrEmpty(SongName))
             {
-                SetTitle(Path.GetFileName(SongName));
+                SetText(this, Path.GetFileName(SongName) + " BlizzardWave");
             }//end if
             }
 
@@ -170,22 +170,37 @@ foreach(var l in Song.MusicData)
                 MessageBox.Show(ex.Message);
             }//end catch
         }//end method
-        private void SetTitle(string Text)
-        {
-            if (!this.IsHandleCreated || this.IsDisposed) return;
-            if (!string.IsNullOrEmpty(Text) && this.Text != Text)
-                {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    this.Text = Text + " Blizzard Wave";
-                    this.AccessibleName = Text + " Blizzard Wave";
-                });
-            }//end if
-        }//end Method
 
         private void mixer1_volumeBar_Scroll(object sender, EventArgs e)
         {
             mp.Volume = Mixer.VolumeBar.Value / 100;
         }
+
+        private void Mixer_panBar_Scroll(object sender, EventArgs e)
+        {
+            try
+            {
+                mp.Pan = Mixer.PanBar.Value / 100;
+            }
+            catch (Exception ex){
+             MessageBox.Show(ex.Message); }//end catch
+        }
+
+        private void Mixer_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void SetText(Control ct, string Text)
+        {
+            if (!ct.IsHandleCreated || ct.IsDisposed) return;
+            if (!string.IsNullOrEmpty(Text) && ct.Text != Text)
+            {
+                ct.Invoke((MethodInvoker)delegate
+                {
+                    ct.Text = Text;
+                    ct.AccessibleName = Text;
+                });
+            }//end if
+        }//end method.SetText
     }//end class
 }//end name space
